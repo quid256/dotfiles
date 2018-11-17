@@ -11,6 +11,12 @@ if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]; then
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 
+# install tmux themepack if necessary
+if [ ! -d "$HOME/.tmux-themepack" ]; then
+	echo "Cloning tmux-themepack..."
+	mkdir -p ~/.tmux-themepack
+	git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack
+fi
 
 
 # Make the olddotfile folder if necessary
