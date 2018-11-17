@@ -1,5 +1,8 @@
 #!/bin/sh
 
+
+INSTALLPATH=$(dirname "$0")
+
 # List of the dotfiles to put in ~
 DOTFILES='.vimrc .tmux.conf .bash_aliases'
 
@@ -25,7 +28,7 @@ mkdir -p ~/.dotfiles/old/
 for DOTFILE in $DOTFILES; do
 	echo "Backing up and updating: $DOTFILE"
 	[ -d $HOME/$DOTFILE ] && cp ~/$DOTFILE ~/.dotfiles/old
-	cp $DOTFILE ~
+	cp $INSTALLPATH/$DOTFILE ~
 done
 
 
