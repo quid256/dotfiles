@@ -1,8 +1,7 @@
 #!/bin/sh
 
 # List of the dotfiles to put in ~
-DOTFILES='.vimrc .tmux.conf'
-
+DOTFILES='.vimrc .tmux.conf .bash_aliases'
 
 # install Vundle if necessary
 if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]; then
@@ -20,13 +19,13 @@ fi
 
 
 # Make the olddotfile folder if necessary
-mkdir -p ~/.olddotfiles
+mkdir -p ~/.dotfiles/old/
 
 # Copy each current dotfile to .olddotfiles and each new dotfile to the appropriate location
 for DOTFILE in $DOTFILES; do
 	echo "Backing up and updating: $DOTFILE"
-	cp ~/$DOTFILE ~/.olddotfiles
-	cp $DOTFILE ~/$DOTFILE
+	[ -d $HOME/$DOTFILE ] && cp ~/$DOTFILE ~/.dotfiles/old
+	cp $DOTFILE ~
 done
 
 
