@@ -33,7 +33,9 @@ Plugin 'christoomey/vim-tmux-navigator'
 
 " Plugin 'Valloric/YouCompleteMe'
 
-" All of your Plugins must be added before the following line
+Plugin 'morhetz/gruvbox'
+
+"All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -76,7 +78,10 @@ set smartindent
 set textwidth=0 wrapmargin=0
 " set laststatus=2 " Always show the powerline
 
-colorscheme wombat256
+"colorscheme wombat256
+colorscheme gruvbox
+set background=dark
+
 
 map! fd <Esc>
 
