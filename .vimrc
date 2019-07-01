@@ -27,7 +27,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'elmcast/elm-vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'isRuslan/vim-es6'
-
+Plugin 'tell-k/vim-autopep8'
 " Plugin 'tpope/vim-obsession'
 Plugin 'christoomey/vim-tmux-navigator'
 
