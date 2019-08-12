@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# The mode of the install script
+#   BACKUP=1   =>  backup the existing files
+#   BACKUP=0   =>  wipe them
+
 BACKUP=1
 
 # List of the dotfiles to put in $HOME
@@ -31,6 +35,7 @@ case $1 in
 esac
 
 
+# The path where these files are
 INSTALLPATH=$(cd $(dirname "$0") && pwd)
 
 # install Vundle if necessary
@@ -60,11 +65,15 @@ if [ $BACKUP -gt 0 ]; then
 fi
 
 for DOTFILE in $DOTFILES; do
-	# Remove the old dotfile
-	rm "$HOME/$DOTFILE"
+	# Remove the old dotfile if it exists
+	if [ -e "$HOME/$DOTFILE" ]; then
+		rm "$HOME/$DOTFILE"
+	else
+		echo "No need to wipe, dotfile not present: $HOME/$DOTFILE"
+	fi
 
-	# Create a hard link
-	ln "$INSTALLPATH/$DOTFILE" "$HOME/$DOTFILE"
+	# Create a symlink from the install path's dotfile to the home dotfile
+	ln -s "$INSTALLPATH/$DOTFILE" "$HOME/$DOTFILE"
 done
 
 # Install all the plugins
