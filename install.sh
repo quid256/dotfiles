@@ -54,12 +54,12 @@ fi
 
 if [ $BACKUP -gt 0 ]; then 
 	# Make the .old-dotfiles folder if necessary
-	mkdir -p $HOME/.old-dotfiles
+	mkdir -p $HOME/.dotfiles/old/
 
 	# Copy each current dotfile to .old-dotfiles and each new dotfile to the appropriate location
 	for DOTFILE in $DOTFILES; do
 		echo "Backing up: $DOTFILE"
-		[ -e "$HOME/$DOTFILE" ] && cp "$HOME/$DOTFILE" $HOME/.old-dotfiles/
+		[ -e "$HOME/$DOTFILE" ] && cp "$HOME/$DOTFILE" $HOME/.dotfiles/old/
 	done
 
 fi
@@ -79,3 +79,6 @@ done
 # Install all the plugins
 echo "Installing all vim plugins..."
 vim +PluginInstall +qall
+
+
+echo "Done!"
